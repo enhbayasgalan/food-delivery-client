@@ -6,6 +6,7 @@ export default function Home() {
   return (
     <div className="bg-[#404040] w-[2240px] h-[4331px] ">
       <Header/>
+      <img src="/Nom.png" alt="home" />
       <Category />
     </div>
   );
