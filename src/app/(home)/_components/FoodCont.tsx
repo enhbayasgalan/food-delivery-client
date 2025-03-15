@@ -37,7 +37,7 @@ const FoodCont = ({categoryId}:Props) => {
             {foods.map((food:Food, index)=>(
                 <div key={index} className="flex flex-col p-4 bg-[#FFFFFF] rounded-lg">
                     <img src={food.image} alt="food" className="w-[325px] h-[170px] rounded-lg"/>
-                    <FoodDetail food={food} getCartItems={getFoods} quantity={1}/>
+                    <FoodDetail food={food} getCartItems={getFoods}/>
                     <div className="flex justify-between">
                         <p className="text-[#EF4444]">{food.foodName}</p>
                         <p>{food.price}$</p>
