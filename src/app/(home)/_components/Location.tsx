@@ -11,7 +11,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ChevronLeft, MapPin, UserRound, UserRoundPen } from "lucide-react";
-import {  FoodOrder } from "./FoodOrder";
+import {  FoodOrderItems } from "./FoodOrderItems";
 
 export const Location = () => {
   return (
@@ -63,7 +63,7 @@ export const Location = () => {
         </DialogContent>
       </Dialog>
 
-      <FoodOrder/>
+      <FoodOrderItems/>
     </div>
   );
 };

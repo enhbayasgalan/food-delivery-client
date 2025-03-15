@@ -26,10 +26,13 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs"
-import { CartDetail } from "./CartDetail";
+import { CartDetail } from "../_features/CartDetail";
 import { OrderDetail } from "./OrderDetail";
 
-export const FoodOrder = () => {
+
+
+
+export const FoodOrderItems = () => {
     return(
         <>
         <Sheet>
