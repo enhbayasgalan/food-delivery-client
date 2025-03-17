@@ -28,7 +28,7 @@ export const FoodDetail = ({ food, getCartItems }: Props) => {
 
   const postQuantity = async () => {
     try {
-      const res = await axios.put(`http://localhost:5000/orderItems`);
+      const res = await axios.post(`http://localhost:5000/food`);
       getCartItems();
       console.log(res);
     } catch (error) {
@@ -53,6 +53,7 @@ export const FoodDetail = ({ food, getCartItems }: Props) => {
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[778px] max-h-[364px]">
+        <img src={food.image} className="w-[377px] h-[20px] px-2 "/>
         <DialogHeader>
           <DialogTitle className="flex flex-col justify-between ">
             <p className="font-semibold text-3xl text-[#EF4444]">
@@ -84,7 +85,7 @@ export const FoodDetail = ({ food, getCartItems }: Props) => {
           </div>
         </div>
         <DialogFooter>
-          <Button type="submit">Save changes</Button>
+          <Button type="submit" onClick={postQuantity}>Add to cart</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

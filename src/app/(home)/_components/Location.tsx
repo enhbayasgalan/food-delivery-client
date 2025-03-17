@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -11,9 +13,29 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ChevronLeft, MapPin, UserRound, UserRoundPen } from "lucide-react";
-import {  FoodOrderItems } from "./FoodOrderItems";
+import { FoodOrderItems } from "./FoodOrderItems";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 export const Location = () => {
+  // const [location, setLocation] = useState("")
+  // const [address, setAddress] = useState(null)
+  // const postaddress = async () => {
+  //   try {
+  //     const res = await axios.post(`http://localhost:5000/user/address`)
+  //     console.log(res);
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   postaddress()
+  // }, [])
+  // const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  //   const value = e.target.value
+  //   setLocation(value)
+  // }
   return (
     <div>
       <Dialog>
@@ -30,40 +52,27 @@ export const Location = () => {
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>Edit profile</DialogTitle>
-            <DialogDescription>
-              Make changes to your profile here. Click save when you're done.
-            </DialogDescription>
+            <DialogTitle>Delivery address</DialogTitle>
+            <DialogDescription></DialogDescription>
           </DialogHeader>
           <div className="grid gap-4 py-4">
-            <div className="grid grid-cols-4 items-center gap-4">
-              <label htmlFor="name" className="text-right">
-                Name
-              </label>
-              <Input
-                id="name"
-                defaultValue="Pedro Duarte"
-                className="col-span-3"
-              />
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="username" className="text-right">
-                Username
-              </Label>
-              <Input
-                id="username"
-                defaultValue="@peduarte"
-                className="col-span-3"
-              />
-            </div>
+            <textarea
+              className="bg-[#FFFFF] border w-full rounded-md h-[100px]"
+              placeholder="Please provide specific address details such as building number, entrance, and apartment number"
+              rows={5}
+              // onChange={(e) => handleChange(e)}
+            ></textarea>
           </div>
           <DialogFooter>
-            <Button type="submit">Save changes</Button>
+            <Button className="bg-[none] border text-black">Cancel</Button>
+            <Button type="submit" >
+              Deliver here
+            </Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
 
-      <FoodOrderItems/>
+      <FoodOrderItems />
     </div>
   );
 };
