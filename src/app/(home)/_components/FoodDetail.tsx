@@ -21,23 +21,32 @@ type food = {
   price: number;
   image: string;
   ingredients: string;
+  _id : string
 };
 
 export const FoodDetail = ({ food, getCartItems }: Props) => {
   const [foodItemsquantity, setQuantity] = useState(1);
 
   const postQuantity = async () => {
-    try {
-      const res = await axios.post(`http://localhost:5000/food`);
-      getCartItems();
-      console.log(res);
-    } catch (error) {
-      console.error(error);
+
+    const cartItems = localStorage.getItem('cart')
+    if (cartItems) {
+      const cart =  JSON.parse(cartItems)
+      cart.push({food:food, quantity:foodItemsquantity})
+      localStorage.setItem("cart", JSON.stringify(cart))
+    }else{
+      localStorage.setItem("cart", JSON.stringify([{food : food, quantity:foodItemsquantity}]))
     }
+
+    // try {
+  
+    //   const res = await axios.post(`http://localhost:5000/orderItems/${food._id}`);
+    //   getCartItems();
+    //   console.log(res);
+    // } catch (error) {
+    //   console.error(error);
+    // }
   };
-  useEffect(() => {
-    postQuantity();
-  }, []);
   const minus = () => {
     if (foodItemsquantity<=1) return
     setQuantity(foodItemsquantity-1) 
