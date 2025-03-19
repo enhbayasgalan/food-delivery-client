@@ -100,4 +100,3 @@ export const FoodDetail = ({ food, getCartItems }: Props) => {
     </Dialog>
   );
 };
-// max-w-[778px] max-h-[364px]

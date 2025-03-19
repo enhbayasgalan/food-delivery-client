@@ -86,7 +86,7 @@ export const CartDetail = () => {
           <p className="font-bold text-base">Total</p>
           <p className="font-bold text-base">{totalprice + 0.99}</p>
         </div>
-        <Button className="py-2 rounded-full bg-[#EF4444] text-[#FFFF] text-sm w-full">
+        <Button className="py-2 rounded-full bg-[#EF4444] text-[#FFFF] text-sm w-full" >
           check out
         </Button>
       </div>
