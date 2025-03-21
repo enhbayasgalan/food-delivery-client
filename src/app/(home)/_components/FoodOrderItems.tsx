@@ -43,6 +43,7 @@ export const FoodOrderItems = () => {
               Order detail
             </SheetTitle>
             <SheetDescription className="w-full p-5">
+              <div>
               <Tabs defaultValue="account" className="w-full">
                 <TabsList className="grid w-full grid-cols-2">
                   <TabsTrigger value="account">Cart</TabsTrigger>
@@ -55,6 +56,7 @@ export const FoodOrderItems = () => {
                   <OrderDetail />
                 </TabsContent>
               </Tabs>
+              </div>
             </SheetDescription>
           </SheetHeader>
           <SheetFooter>
