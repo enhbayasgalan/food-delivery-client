@@ -1,30 +1,30 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable jsx-a11y/alt-text */
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import axios from "axios";
 import { Minus, Plus } from "lucide-react";
-import { useEffect, useState } from "react";
-import { useDebounce } from "use-debounce";
+import {  useState } from "react";
+
 type Props = {
   food: food;
-  getCartItems: Function;
+  getCartItems: ()=> Promise<void>;
 };
 type food = {
   foodName: string;
   price: number;
   image: string;
   ingredients: string;
-  _id : string
+  _id : string | null
 };
 
-export const FoodDetail = ({ food, getCartItems }: Props) => {
+export const FoodDetail = ({ food }: Props) => {
   const [foodItemsquantity, setQuantity] = useState(1);
 
   const postQuantity = async () => {

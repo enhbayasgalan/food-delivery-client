@@ -1,14 +1,12 @@
 "use client";
 
 import { Card } from "@/components/ui/card";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { Logo } from "../_components/Logo";
-import { FoodDetail } from "../_components/FoodDetail";
-import { log } from "console";
-import { Button } from "@/components/ui/button";
-import { Car } from "lucide-react";
 import { FoodCart } from "../_components/FoodCard";
+import { Button } from "@/components/ui/button";
+import axios from "axios";
+
 
   type CartItems = {
     food: food;
@@ -26,6 +24,8 @@ import { FoodCart } from "../_components/FoodCard";
 
 export const CartDetail = () => {
   const [cartitems, setCartItmes] = useState<CartItems[]>([]);
+
+
   const getItems = async () => {
     const cart = localStorage.getItem("cart")
     if (cart) {
@@ -36,17 +36,33 @@ export const CartDetail = () => {
     getItems();
   }, []);
   const totalprice = cartitems.reduce((sum, item) => sum + Number(item.food.price) * item.quantity, 0)
+
+  const addorder = async () => {
+    const token = localStorage.getItem('token')
+    const items = localStorage.getItem('cart')
+    if (items) {
+      const fooditems:Array<CartItems> = JSON.parse(items)
+
+      
+      const item = fooditems.flatMap((fooditem)=>({food: fooditem.food._id, quantity : fooditem.quantity}))
+      console.log(item);
+      
+    try {
+      const res = await axios.post(`http://localhost:5000/order`, {totalPrice:totalprice, foodOrderItems:item},{
+        headers: {
+          Authorization : token
+        }
+      })
+      console.log(res);
+      
+    } catch (error) {
+      console.log(error);
+      
+    }    }
+  }
+
+
   return (
-    // <div>
-    // <Card className="w-[360px] h-full flex flex-col gap-6 lg:gap-3 ">
-    // <h1 className="font-bold text-xl px-2 py-3">My cart</h1>
-    //     {foods.map((food: food, index) => (
-    //         <div key={index} className="flex h-[120px] gap-[10px] flex-col">
-    //             <img src={food.image} alt="foodimage" className="w-[124px] h-[120px] rounded-xl"/>
-    //         </div>
-    //     ))}
-    // </Card>
-    // </div>
     <div className="w-full h-full flex flex-col gap-6">
       <Card className="p-4 w-full rounded-xl flex flex-col gap-5">
         <h1 className="font-semibold text-xl">My Cart</h1>
@@ -86,7 +102,7 @@ export const CartDetail = () => {
           <p className="font-bold text-base">Total</p>
           <p className="font-bold text-base">{totalprice + 0.99}</p>
         </div>
-        <Button className="py-2 rounded-full bg-[#EF4444] text-[#FFFF] text-sm w-full" >
+        <Button className="py-2 rounded-full bg-[#EF4444] text-[#FFFF] text-sm w-full" onClick={addorder}>
           check out
         </Button>
       </div>

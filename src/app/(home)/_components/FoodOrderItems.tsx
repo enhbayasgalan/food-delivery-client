@@ -27,6 +27,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CartDetail } from "../_features/CartDetail";
 import { OrderDetail } from "./OrderDetail";
+import { UserDetail } from "./UserDetail";
 
 export const FoodOrderItems = () => {
   return (
@@ -65,7 +66,7 @@ export const FoodOrderItems = () => {
         </SheetContent>
       </Sheet>
       <Button className="rounded-full bg-[#EF4444]">
-        <UserRoundPen />
+        <UserDetail />
       </Button>
     </>
   );

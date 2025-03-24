@@ -1,10 +1,11 @@
+/* eslint-disable @next/next/no-img-element */
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { FoodDetail } from "./FoodDetail"
-import { FoodOrderItems } from "./FoodOrderItems"
+
 
 type Props = {
-    categoryId : string
+    categoryId : string | null
 }
 type Food = {
     foodName: string;
@@ -35,9 +36,11 @@ const FoodCont = ({categoryId}:Props) => {
     return(
         <div className="flex gap-6 flex-wrap">
             {foods.map((food:Food, index)=>(
-                <div key={index} className="flex flex-col p-4 bg-[#FFFFFF] rounded-lg">
-                    <img src={food.image} alt="food" className="w-[325px] h-[170px] rounded-lg"/>
-                    <FoodDetail food={food} getCartItems={getFoods}/>
+                <div key={index} className="flex flex-col p-4 bg-[#FFFFFF] rounded-lg mt-[15px]">
+                    <div>
+                      <img src={food.image} alt="food" className="w-[325px] h-[170px] rounded-lg"/>
+                      <FoodDetail food={food} getCartItems={getFoods}/>
+                    </div>
                     <div className="flex justify-between">
                         <p className="text-[#EF4444]">{food.foodName}</p>
                         <p>{food.price}$</p>

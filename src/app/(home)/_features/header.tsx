@@ -1,7 +1,5 @@
-import { useReducer } from "react"
 import { SearchCard } from "../_components/SearchCard"
 import { LogoNomNom } from "./LogoNom"
-import { useRouter } from "next/router"
 
 export const Header = () => {
     return(

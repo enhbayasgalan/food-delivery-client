@@ -1,12 +1,9 @@
 "use client"
 
-import axios from "axios";
-import { Soup, Timer } from "lucide-react";
-import { useEffect, useState } from "react"
-import { Map } from "lucide-react";
-
 export const OrderHistory = () => {
     return(
-        <div></div>
+        <div className="w-full h-fit flex flex-col p-3 gap-3 border border-dashed">
+            <div className="w-full flex justify-between"></div>
+        </div>
     ) 
 }

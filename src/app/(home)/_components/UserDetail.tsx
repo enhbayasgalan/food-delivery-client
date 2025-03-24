@@ -33,7 +33,7 @@ import {
 import { DropdownMenuRadioGroup } from "@radix-ui/react-dropdown-menu"
 import { useEffect, useState } from "react"
 import axios from "axios"
-import { useRouter } from "next/router"
+import { useRouter } from "next/navigation"
 
 export const UserDetail = () => {
     const router = useRouter()
@@ -52,7 +52,7 @@ export const UserDetail = () => {
         getEmail()
     }, [])
     const signOut = () => {
-        router.push('login')
+        router.push('loginpage')
     }
     return(
         <DropdownMenu>
@@ -63,7 +63,7 @@ export const UserDetail = () => {
           <DropdownMenuLabel>{email}</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuRadioGroup value={"bottom"} className="flex justify-center">
-            <Button className="rounded-full">Sign out</Button>
+            <Button className="rounded-full bg-gray-400" onClick={signOut}>Sign out</Button>
           </DropdownMenuRadioGroup>
         </DropdownMenuContent>
       </DropdownMenu>
