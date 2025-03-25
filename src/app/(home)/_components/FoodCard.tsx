@@ -1,7 +1,8 @@
-import { Button } from "@/components/ui/button";
+/* eslint-disable @next/next/no-img-element */
+
 import axios from "axios";
-import { log } from "console";
-import { Divide, Minus, Plus, X } from "lucide-react";
+
+import { Minus, Plus, X } from "lucide-react";
 import { useState } from "react";
 type Props = {
   food: food;
@@ -17,7 +18,7 @@ type food = {
   _id: string;
 };
 
-export const FoodCart = ({ food, quantity, getCartItems }: Props) => {
+export const FoodCart = ({ food, quantity }: Props) => {
   const [foodquantity, setFoodQuantity] = useState(quantity);
   const minus = () => {
     if (foodquantity <= 1) return;
@@ -30,6 +31,9 @@ export const FoodCart = ({ food, quantity, getCartItems }: Props) => {
     try {
       const res = await axios.delete(`http://localhost:5000/orderItems`);
       console.log(res);
+
+
+
     } catch (error) {
       console.log(error);
     }

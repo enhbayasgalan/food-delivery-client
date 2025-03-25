@@ -4,7 +4,7 @@ import { Carousel, CarouselContent, CarouselItem, } from "@/components/ui/carous
 import axios from "axios";
 import { useEffect, useState } from "react";
 import FoodCont from "../_components/FoodCont";
-import { useRouter } from "next/navigation";
+
 
 
 type Props = {
@@ -16,7 +16,7 @@ type category = {
     _id : string | null
 }
 
-export const Category = () => {
+export const Category = ({}:Props) => {
     const [categories, setCategory] = useState([])
     const getCategory = async () => {
         try {
@@ -36,7 +36,7 @@ export const Category = () => {
         <div className="flex w-[1440px] px-[32px] py-[48px] flex-col gap-[36px]">
             <p className="text-2xl font-semibold text-white">Categories</p>
             <Carousel>
-                <CarouselContent className="gap-3 w-[92px] h-[28px]">
+                <CarouselContent className="gap-3 w-[92px] h-[30px]">
                     {categories?.map((category : category, index) => (
                         <CarouselItem className="bg-[#FFFF] gap-[8px] py-3 py-1 text-black rounded-full " key={index} >
                             {category.categoryName}

@@ -1,7 +1,4 @@
 import { Card } from "@/components/ui/card"
-import axios from "axios"
-import { log } from "console"
-import { useServerInsertedHTML } from "next/navigation"
 import { useEffect, useState } from "react"
 import { Logo } from "./Logo"
 import { Button } from "@/components/ui/button"
@@ -19,6 +16,8 @@ type food = {
   category: string;
   _id: string;
 };
+
+
 export const OrderDetail = () => {
   const [cartitems, setCartItmes] = useState<CartItems[]>([]);
     const getItems = async () => {
@@ -40,8 +39,8 @@ export const OrderDetail = () => {
             <Logo />
             <div className="text-lg font-semibold">Your cart is empty</div>
             <div className="text-[#71717A] text-center text-sm">
-            🍕 "You haven't placed any orders yet. Start exploring our menu
-            and satisfy your cravings!"
+            🍕 &quot;You haven&apos;t placed any orders yet. Start exploring our menu
+            and satisfy your cravings!&quot;
             </div>
           </div>
         ) : (

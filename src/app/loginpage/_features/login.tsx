@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
-import { Password } from "../../singup/_components/Password";
+
 import axios from "axios";
 type form = {
   email: string;
@@ -28,12 +28,14 @@ export const Login = () => {
   const Check = async () => {
     console.log(form);
     try {
-      const res = await axios.post(`http://localhost:5000/user/login`, form);
+      const res = await axios.post(`http://localhost:5000/user/login`, form );
       console.log(res);
       if (res.data !== "user not found" && res.data !== 'Wrong password') {
         localStorage.setItem('token',res.data)
         router.push('/')
       }
+
+      
     } catch (error) {
       console.log(error);
     }

@@ -32,6 +32,7 @@ const FoodCont = ({categoryId}:Props) => {
     }
     useEffect(()=>{
         getFoods()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
     return(
         <div className="flex gap-6 flex-wrap">
@@ -42,10 +43,10 @@ const FoodCont = ({categoryId}:Props) => {
                       <FoodDetail food={food} getCartItems={getFoods}/>
                     </div>
                     <div className="flex justify-between">
-                        <p className="text-[#EF4444]">{food.foodName}</p>
-                        <p>{food.price}$</p>
+                        <p className="text-[#EF4444] font-semibold text-xl">{food.foodName}</p>
+                        <p className="font-semibold text-xl">{food.price}$</p>
                     </div>
-                    <div>
+                    <div className="font-semibold text-sm">
                         {food.ingredients}
                     </div>
                 </div>

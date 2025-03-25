@@ -1,33 +1,14 @@
 'use client'
 import {
-    Cloud,
-    CreditCard,
-    Keyboard,
-    LifeBuoy,
-    LogOut,
-    Mail,
-    MessageSquare,
-    Plus,
-    PlusCircle,
-    Settings,
     User,
-    UserPlus,
-    Users,
   } from "lucide-react"
    
   import { Button } from "@/components/ui/button"
   import {
     DropdownMenu,
     DropdownMenuContent,
-    DropdownMenuGroup,
-    DropdownMenuItem,
     DropdownMenuLabel,
-    DropdownMenuPortal,
     DropdownMenuSeparator,
-    DropdownMenuShortcut,
-    DropdownMenuSub,
-    DropdownMenuSubContent,
-    DropdownMenuSubTrigger,
     DropdownMenuTrigger,
   } from "@/components/ui/dropdown-menu"
 import { DropdownMenuRadioGroup } from "@radix-ui/react-dropdown-menu"
@@ -42,6 +23,8 @@ export const UserDetail = () => {
         try {
             const res = await axios.get(`http://localhost:5000/user`)
             console.log(res);
+
+            setEmail(res.data.email)
             
         } catch (error) {
             console.error(error);
