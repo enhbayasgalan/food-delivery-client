@@ -9,11 +9,12 @@ type Props = {
 }
 
 type order = {
-    orderItems : item[],
+    foodOrderItems : item[],
     status: string,
     createdAt: Date,
     user : string,
     totalPrice: number
+    address: string
 }
 
 type item = {
@@ -52,7 +53,7 @@ export const OrderHistory = ({order} : Props) => {
                 <div>{order.status}</div>
             </div>
             <div className="flex flex-col text-[#09090B80]">
-                {order.orderItems.map((item : item, index) => (
+                {order.foodOrderItems.map((item : item, index) => (
                     <div key={index} className="flex w-full flex-col">
                         <div className="flex justify-between">
                             <div className="flex gap-2 items-center">
@@ -65,11 +66,11 @@ export const OrderHistory = ({order} : Props) => {
                 ))}
                 <div className="w-full flex items-center gap-2">
                     <Timer stroke="#09090B80"/>
-                    <p>{order.createdAt.toString().split("P")[0]}</p>
+                    <p>{order.createdAt?.toString().split("T")[0]}</p>
                 </div>
                 <div className="w-full flex items-center gap-2">
                     <Map stroke="#09090B80"/>
-                    <p>{address}</p>
+                    <p>{order.address}</p>
                 </div>
             </div>
         </div>

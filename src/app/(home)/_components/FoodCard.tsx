@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 
-import axios from "axios";
 
 import { Minus, Plus, X } from "lucide-react";
 import { useState } from "react";
@@ -8,6 +7,8 @@ type Props = {
   food: food;
   quantity: number;
   getCartItems(): Promise<void>;
+  setCartItems : (cartitems : CartItems[])=> void
+
 };
 type food = {
   foodName: string;
@@ -17,8 +18,13 @@ type food = {
   category: string;
   _id: string;
 };
+type CartItems = {
+  food : food
+  quantity : number
+  _id : string
+}
 
-export const FoodCart = ({ food, quantity }: Props) => {
+export const FoodCart = ({ food, quantity, setCartItems }: Props) => {
   const [foodquantity, setFoodQuantity] = useState(quantity);
   const minus = () => {
     if (foodquantity <= 1) return;
@@ -28,14 +34,13 @@ export const FoodCart = ({ food, quantity }: Props) => {
     setFoodQuantity((prev) => prev + 1);
   };
   const deleteItem = async () => {
-    try {
-      const res = await axios.delete(`http://localhost:5000/orderItems`);
-      console.log(res);
-
-
-
-    } catch (error) {
-      console.log(error);
+    const items = localStorage.getItem('cart')
+    if (items) {
+      const parseItems : CartItems[] = JSON.parse(items)
+      const filterdItems = parseItems.filter((item)=> item.food._id !== food._id)
+      console.log(filterdItems);
+      localStorage.setItem('cart', JSON.stringify(filterdItems))
+      setCartItems(filterdItems)
     }
   };
   const price = (foodquantity * (food?.price || 0)).toFixed(2);

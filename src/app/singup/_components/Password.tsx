@@ -9,7 +9,7 @@ type Props = {
   user: User;
   setStep: (step: number) => void;
   setUser: (user: User) => void;
-  postUser: Function;
+  postUser(): Promise<void>;
 };
 
 type User = {

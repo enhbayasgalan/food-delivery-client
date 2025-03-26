@@ -35,6 +35,7 @@ export const Login = () => {
         router.push('/')
       }
 
+      localStorage.getItem("cart" )
       
     } catch (error) {
       console.log(error);

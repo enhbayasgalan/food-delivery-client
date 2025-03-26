@@ -1,29 +1,54 @@
+'use client'
+
 import { Card } from "@/components/ui/card"
 import { useEffect, useState } from "react"
 import { Logo } from "./Logo"
 import { Button } from "@/components/ui/button"
 import { OrderHistory } from "./OrderHistory"
-type CartItems = {
-  food: food;
-  quantity: number;
-  _id: string;
-};
+import axios from "axios"
+type order = {
+  foodOrderItems : item[],
+  status: string,
+  createdAt: Date,
+  user : User,
+  totalPrice: number
+}
+
+type item = {
+  food: food
+  quantity: number
+}
+
 type food = {
   foodName: string;
   price: number;
   image: string;
   ingredients: string;
-  category: string;
-  _id: string;
-};
+  _id : string
+}
+type User = {
+  email :string
+  address : string
+}
+
 
 
 export const OrderDetail = () => {
-  const [cartitems, setCartItmes] = useState<CartItems[]>([]);
+  const [orderItems, setortderItmes] = useState<order[]>([]);
     const getItems = async () => {
-      const cart = localStorage.getItem("cart")
-      if (cart) {
-        setCartItmes(JSON.parse(cart))
+      try {
+        const token = localStorage.getItem('token')
+        const response = await axios.get(`http://localhost:5000/order`,{
+          headers : {
+            Authorization : token
+          }
+        })
+        console.log(response);
+        setortderItmes(response.data)
+        
+      } catch (error) {
+        console.log(error);
+        
       }
     };
     useEffect(() => {
@@ -34,7 +59,7 @@ export const OrderDetail = () => {
       <Card className="p-4 w-full rounded-xl flex flex-col gap-5">
         <h1 className="font-semibold text-xl">Order History</h1>
 
-        {cartitems.length === 0 ? (
+        {orderItems.length === 0 ? (
           <div className="py-8 px-12 w-full flex flex-col items-center gap-1 bg-[#F4F4F5] rounded-md">
             <Logo />
             <div className="text-lg font-semibold">Your cart is empty</div>
@@ -44,8 +69,8 @@ export const OrderDetail = () => {
             </div>
           </div>
         ) : (
-          cartitems.map((item, index) => (
-            <OrderHistory key={index}/>
+          orderItems.map((order, index) => (
+            <OrderHistory key={index} order={order}/>
           ))
         )}
 

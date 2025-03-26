@@ -7,7 +7,7 @@ import { Header } from "./(home)/_features/header";
 
 export default function Home() {
   return (
-    <div className="bg-[#404040] w-[2240px] h-fit ">
+    <div className="bg-[#404040] w-[2240px] h-fit">
       <Header/>
       <img src="/Nom.png" alt="home" className="w-[2240px] h-[800px] top-[68px]"/>
       <Category />

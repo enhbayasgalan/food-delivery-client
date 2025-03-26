@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/dialog";
 import { Minus, Plus } from "lucide-react";
 import {  useState } from "react";
-
+import { toast } from 'react-toastify';
 type Props = {
   food: food;
   getCartItems: ()=> Promise<void>;
@@ -47,6 +47,7 @@ export const FoodDetail = ({ food }: Props) => {
     //   console.error(error);
     // }
   };
+  const notify = () => toast("Success food")
   const minus = () => {
     if (foodItemsquantity<=1) return
     setQuantity(foodItemsquantity-1) 
@@ -94,7 +95,8 @@ export const FoodDetail = ({ food }: Props) => {
           </div>
         </div>
         <DialogFooter>
-          <Button type="submit" onClick={postQuantity}>Add to cart</Button>
+          <Button type="submit" onClick={postQuantity} onClickCapture={notify}>Add to cart</Button>
+          
         </DialogFooter>
       </DialogContent>
     </Dialog>

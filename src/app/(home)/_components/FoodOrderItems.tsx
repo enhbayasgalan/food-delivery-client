@@ -21,15 +21,13 @@ export const FoodOrderItems = () => {
   return (
     <>
       <Sheet>
-        <SheetTrigger asChild>
-          <Button variant="outline" className="rounded-full">
-            <ShoppingCart />
-          </Button>
+        <SheetTrigger asChild className="rounded-full  w-[46px] h-[46px] gap-[8px] bg-[#F4F4F5]">
+            <ShoppingCart className="bg-secondary-foreground"/>
         </SheetTrigger>
         <SheetContent className="bg-[#404040] sm:max-w-xl w-[600px]">
           <SheetHeader>
-            <SheetTitle className="font-medium text-xl text-white">
-              Order detail
+            <SheetTitle className="font-medium text-xl text-white justify-between gap-3">
+                <p className="font-semibold text-xl">Order Detail</p>
             </SheetTitle>
             <SheetDescription className="w-full p-5">
               <div>

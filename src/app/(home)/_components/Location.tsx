@@ -15,6 +15,7 @@ import {  ChevronRight, MapPin, X } from "lucide-react";
 import { FoodOrderItems } from "./FoodOrderItems";
 import axios from "axios";
 import React, {  useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
 
 export const Location = () => {
   const [address, setAddress] = useState("");
@@ -35,12 +36,14 @@ export const Location = () => {
     }
   }
 
+  const notify = () => toast("Success location")
+
   const handleValue = (e : React.ChangeEvent<HTMLTextAreaElement>) => {
     const value = e.target.value
     setAddress(value)
   }
   return (
-    <div>
+    <div className="jusify-between flex gap-[20px]">
       <Dialog>
         <DialogTrigger asChild>
         <div
@@ -78,9 +81,10 @@ export const Location = () => {
           </div>
           <DialogFooter>
             <Button className="bg-[none] border text-black">Cancel</Button>
-            <Button type="submit" onClick={postAddress}>
+            <Button type="submit" onClick={postAddress} onClickCapture={notify}>
               Deliver here
             </Button>
+            <ToastContainer/>
           </DialogFooter>
         </DialogContent>
       </Dialog>
