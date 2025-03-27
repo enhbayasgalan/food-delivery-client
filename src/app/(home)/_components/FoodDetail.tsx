@@ -47,7 +47,7 @@ export const FoodDetail = ({ food }: Props) => {
     //   console.error(error);
     // }
   };
-  const notify = () => toast("Success food")
+  const notify = () => toast("Success food cart")
   const minus = () => {
     if (foodItemsquantity<=1) return
     setQuantity(foodItemsquantity-1) 

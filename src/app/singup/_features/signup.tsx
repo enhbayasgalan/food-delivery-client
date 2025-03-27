@@ -1,11 +1,8 @@
 "use client"
 
-import { Axe, ChevronLeft, StepBack } from "lucide-react"
-import { Input } from "@/components/ui/input"
 import { useState } from "react"
 import axios from "axios"
 import { Email } from "../_components/Email"
-import { userAgent } from "next/server"
 import { Password } from "../_components/Password"
 import { useRouter } from "next/navigation"
 

@@ -50,7 +50,7 @@ export const OrderHistory = ({order} : Props) => {
         <div className="w-full h-fit flex flex-col p-3 gap-3 border border-dashed">
             <div className="w-full flex justify-between">
                 <p>${order.totalPrice}</p>
-                <div>{order.status}</div>
+                <div className="text-green-500">{order.status}</div>
             </div>
             <div className="flex flex-col text-[#09090B80]">
                 {order.foodOrderItems.map((item : item, index) => (
