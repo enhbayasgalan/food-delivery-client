@@ -21,7 +21,7 @@ export const UserDetail = () => {
     const [email, setEmail] = useState("")
     const getEmail = async () => {
         try {
-            const res = await axios.get(`http://localhost:5000/user`)
+            const res = await axios.get(`http://localhost:5000/user`, )
             console.log(res);
 
             setEmail(res.data.email)
