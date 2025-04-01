@@ -95,7 +95,7 @@ export const FoodDetail = ({ food }: Props) => {
           </div>
         </div>
         <DialogFooter>
-          <Button type="submit" onClick={postQuantity} onClickCapture={notify}>Add to cart</Button>
+          <Button  onClick={postQuantity} onClickCapture={notify}>Add to cart</Button>
           
         </DialogFooter>
       </DialogContent>

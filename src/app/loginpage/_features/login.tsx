@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 
 import axios from "axios";
+import { toast } from "react-toastify";
 type form = {
   email: string;
   password: string;
@@ -14,7 +15,7 @@ type form = {
 export const Login = () => {
   const router = useRouter();
   const [form, setForm] = useState<form>({ email: "", password: "" });
-  const [emialInvalid, setEmailInvalid] = useState(false);
+  const [emialInvalid] = useState(false);
   const [showpass, setShowpass] = useState(false);
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,6 +43,7 @@ export const Login = () => {
     }
   };
   // console.log(form);
+  const notify = () => toast("Success Login")
 
   return (
     <div className="w[416px] flex items-center justify-center">
@@ -83,14 +85,14 @@ export const Login = () => {
             <p>show password</p>
           </div>
         </form>
-        <Button className="py-[4px]w-full border rounded-md" onClick={Check}>
+        <Button className="py-[4px]w-full border rounded-md bg-gray-400" onClick={Check} onClickCapture={notify}>
           lets go
         </Button>
         <div className="flex w-full justify-center gap-4">
           <p>Dont have a account?</p>
-          <p onClick={() => router.push("/singup")} className="text-[#2563EB]">
+          <Button onClick={() => router.push("/singup")} className="text-[#2563EB]" variant="outline">
             sign up
-          </p>
+          </Button>
         </div>
       </div>
     </div>

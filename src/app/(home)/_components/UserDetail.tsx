@@ -15,10 +15,14 @@ import { DropdownMenuRadioGroup } from "@radix-ui/react-dropdown-menu"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { useRouter } from "next/navigation"
+import { toast } from "react-toastify"
 
 export const UserDetail = () => {
+  
     const router = useRouter()
     const [email, setEmail] = useState("")
+    
+    
     const getEmail = async () => {
         try {
             const res = await axios.get(`http://localhost:5000/user`, )
@@ -37,6 +41,7 @@ export const UserDetail = () => {
     const signOut = () => {
         router.push('loginpage')
     }
+    const notify = () => toast("Login && Sign up Page")
     return(
         <DropdownMenu>
         <DropdownMenuTrigger asChild>
@@ -46,7 +51,7 @@ export const UserDetail = () => {
           <DropdownMenuLabel>{email}</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuRadioGroup value={"bottom"} className="flex justify-center">
-            <Button className="rounded-full bg-gray-400" onClick={signOut}>Sign out</Button>
+            <Button className="rounded-full bg-gray-400" onClick={signOut} onClickCapture={notify}>Sign out</Button>
           </DropdownMenuRadioGroup>
         </DropdownMenuContent>
       </DropdownMenu>

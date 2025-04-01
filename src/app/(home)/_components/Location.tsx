@@ -11,7 +11,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-import {  ChevronRight, MapPin, X } from "lucide-react";
+import {  ChevronRight, MapPin,  } from "lucide-react";
 import { FoodOrderItems } from "./FoodOrderItems";
 import axios from "axios";
 import React, {  useState } from "react";
@@ -61,7 +61,6 @@ export const Location = () => {
               <p className="text-black-500 text-sm">
                 {address}
               </p>
-              <X stroke="black"/>
             </div>
           )}
         </div>
@@ -80,7 +79,6 @@ export const Location = () => {
             ></textarea>
           </div>
           <DialogFooter>
-            <Button className="bg-[none] border text-black">Cancel</Button>
             <Button type="submit" onClick={postAddress} onClickCapture={notify}>
               Deliver here
             </Button>

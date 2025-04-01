@@ -3,8 +3,9 @@
 import { ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+
 import { Input } from "@/components/ui/input";
+import { toast } from "react-toastify";
 type Props = {
   user: User;
   setStep: (step: number) => void;
@@ -18,12 +19,11 @@ type User = {
 };
 
 export const Password = ({ user, postUser, setUser, setStep }: Props) => {
-  const router = useRouter();
   const [confirm, setConfirm] = useState<string>("");
   const [passwordError, setPasswordError] = useState<string>();
   const [show, setShow] = useState(false);
   const LoginPage = () => {
-    const passwordinvaild = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    // const passwordinvaild = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     if (user.password) {
       if (user.password === confirm) {
         postUser();
@@ -35,6 +35,7 @@ export const Password = ({ user, postUser, setUser, setStep }: Props) => {
     }
   };
   console.log(user);
+  const notify = () => toast("Success food cart")
 
   return (
     <div>
@@ -94,6 +95,7 @@ export const Password = ({ user, postUser, setUser, setStep }: Props) => {
       <Button
         className="py-[14px] w-[416px] border roundedmd mt-[10px]"
         onClick={LoginPage}
+        onClickCapture={notify}
       >
         lets go
       </Button>

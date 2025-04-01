@@ -73,10 +73,6 @@ export const OrderDetail = () => {
             <OrderHistory key={index} order={order}/>
           ))
         )}
-
-        <Button className="px-[8px] py-[32px] justify-center items-center gap-[8px] h-[44px] bg-[#EF4444] rounded-full">
-            add foods
-        </Button>
       </Card>
     </div>
     )

@@ -5,6 +5,7 @@ import axios from "axios"
 import { Email } from "../_components/Email"
 import { Password } from "../_components/Password"
 import { useRouter } from "next/navigation"
+import { Button } from "@/components/ui/button"
 
 
 type User = {
@@ -43,9 +44,9 @@ export const SignUpEmail = () => {
         )}
         <div className="flex w-[416px] justify-center gap-4">
           <p>Already have a account</p>
-          <p onClick={LoginPage} className="text-[#2563EB]">
+          <Button onClick={LoginPage} className="text-[#2563EB]" variant="outline">
             Login in
-          </p>
+          </Button>
         </div>
       </div>
     </div>

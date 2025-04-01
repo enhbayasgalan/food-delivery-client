@@ -6,6 +6,7 @@ import { Logo } from "../_components/Logo";
 import { FoodCart } from "../_components/FoodCard";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 type CartItems = {
   food: food;
@@ -69,6 +70,7 @@ export const CartDetail = () => {
       }
     }
   };
+  const notify = () => toast("Success food cart")
 
   return (
     <div className="w-full h-full flex flex-col gap-6">
@@ -96,9 +98,6 @@ export const CartDetail = () => {
           ))
         )}
 
-        <Button className="px-[8px] py-[32px] justify-center items-center gap-[8px] h-[44px] bg-[#EF4444] rounded-full">
-          add foods
-        </Button>
       </Card>
       <div className="p-4 bg-[#FFFF] rounded-xl flex flex-col gap-5">
         <div className="text-xl font-semibold text-black">Payment info</div>
@@ -119,6 +118,7 @@ export const CartDetail = () => {
         <Button
           className="py-2 rounded-full bg-[#EF4444] text-[#FFFF] text-sm w-full"
           onClick={addorder}
+          onClickCapture={notify}
         >
           check out
         </Button>
