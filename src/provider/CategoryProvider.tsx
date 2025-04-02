@@ -4,19 +4,10 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { createContext, ReactNode, useContext } from "react";
 
-type Food = {
-  foodName: string;
-  price: number;
-  image: string;
-  ingredients: string;
-  _id: string;
-  category: string;
-};
-
 type Response = {
   categoryName: string;
   _id: string;
-  food: Food[];
+  food_count: number;
 };
 
 type CategoryContextType = {
@@ -28,9 +19,7 @@ const CategoryContext = createContext<CategoryContextType | null>(null);
 
 const getCategory = async (): Promise<Response[]> => {
   try {
-    const response = await axios.get(
-      "https://food-delivery-service-0wy6.onrender.com/category"
-    );
+    const response = await axios.get("http://localhost:5000/category");
     console.log("Category fetched:", response.data);
     return response.data;
   } catch (error) {

@@ -10,36 +10,38 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Minus, Plus } from "lucide-react";
-import {  useState } from "react";
-import { toast } from 'react-toastify';
+import { useState } from "react";
+import { toast } from "react-toastify";
 type Props = {
   food: food;
-  getCartItems: ()=> Promise<void>;
 };
 type food = {
   foodName: string;
   price: number;
   image: string;
   ingredients: string;
-  _id : string | null
+  _id: string | null;
 };
 
 export const FoodDetail = ({ food }: Props) => {
   const [foodItemsquantity, setQuantity] = useState(1);
 
   const postQuantity = async () => {
-
-    const cartItems = localStorage.getItem('cart')
+    const cartItems = localStorage.getItem("cart");
     if (cartItems) {
-      const cart =  JSON.parse(cartItems)
-      cart.push({food:food, quantity:foodItemsquantity})
-      localStorage.setItem("cart", JSON.stringify(cart))
-    }else{
-      localStorage.setItem("cart", JSON.stringify([{food : food, quantity:foodItemsquantity}]))
+      const cart = JSON.parse(cartItems);
+      cart.push({ food: food, quantity: foodItemsquantity });
+      localStorage.setItem("cart", JSON.stringify(cart));
+    } else {
+      localStorage.setItem(
+        "cart",
+        JSON.stringify([{ food: food, quantity: foodItemsquantity }])
+      );
     }
+    
 
     // try {
-  
+
     //   const res = await axios.post(`http://localhost:5000/orderItems/${food._id}`);
     //   getCartItems();
     //   console.log(res);
@@ -47,11 +49,11 @@ export const FoodDetail = ({ food }: Props) => {
     //   console.error(error);
     // }
   };
-  const notify = () => toast("Success food cart")
+  const notify = () => toast("Success food cart");
   const minus = () => {
-    if (foodItemsquantity<=1) return
-    setQuantity(foodItemsquantity-1) 
-  }
+    if (foodItemsquantity <= 1) return;
+    setQuantity(foodItemsquantity - 1);
+  };
   return (
     <Dialog>
       <DialogTrigger
@@ -63,7 +65,7 @@ export const FoodDetail = ({ food }: Props) => {
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[778px] max-h-[364px]">
-        <img src={food.image} className="w-[377px] h-[20px] px-2 "/>
+        <img src={food.image} className="w-[377px] h-[20px] px-2 " />
         <DialogHeader>
           <DialogTitle className="flex flex-col justify-between ">
             <p className="font-semibold text-3xl text-[#EF4444]">
@@ -80,10 +82,7 @@ export const FoodDetail = ({ food }: Props) => {
         </DialogHeader>
         <div className="justify-between flex w-full">
           <div className="flex items-center gap-2">
-            <Button
-              className="p-1 rounded-full"
-              onClick={minus}
-            >
+            <Button className="p-1 rounded-full" onClick={minus}>
               <Minus size={20} />
             </Button>
             <Button
@@ -95,8 +94,9 @@ export const FoodDetail = ({ food }: Props) => {
           </div>
         </div>
         <DialogFooter>
-          <Button  onClick={postQuantity} onClickCapture={notify}>Add to cart</Button>
-          
+          <Button onClick={postQuantity} onClickCapture={notify}>
+            Add to cart
+          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

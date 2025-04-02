@@ -45,15 +45,15 @@ export const Footer = () => {
             <div className="flex gap-[56px]">
               <div className="flex flex-col gap-4 text-white">
                 <div className="text-[#71717A]">Menu</div>
-                {categories.slice(0, 5).map((category) => {
+                {categories.slice(0, 5).map((category) => (
                   <div key={category._id}>{category.categoryName}</div>
-                })}
+                ))}
               </div>
               <div className="flex flex-col gap-4 text-white">
                 <div className="text-[#71717A]">Menu</div>
-                {categories.slice(5, 10).map((category) => {
+                {categories.slice(5, 10).map((category) => (
                   <div key={category._id}>{category.categoryName}</div>
-                })}
+                ))}
               </div>
             </div>
             <div className="flex flex-col gap-4">

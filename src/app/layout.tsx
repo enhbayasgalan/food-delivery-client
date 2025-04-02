@@ -1,5 +1,4 @@
-'use client'
-
+"use client";
 
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -17,24 +16,19 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const queryclient =new  QueryClient()
+  const queryclient = new QueryClient();
   return (
-  
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <QueryClientProvider client={queryclient}>
-          <CategoryProvider>
-        {children}
-        </CategoryProvider>
+          <CategoryProvider>{children}</CategoryProvider>
         </QueryClientProvider>
         <ToastContainer />
       </body>
