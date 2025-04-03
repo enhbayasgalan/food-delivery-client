@@ -53,6 +53,7 @@ export const OrderProvider = ({ children }: { children: ReactNode }) => {
     const { data: orders = [], refetch: refetchOrder } = useQuery({
         queryKey: ["orders"],
         queryFn: getOrder, 
+        
     });
 
     return (
@@ -61,6 +62,9 @@ export const OrderProvider = ({ children }: { children: ReactNode }) => {
         </OrderContext.Provider>
     );
 };
+
+
+
 
 export const useOrder = () => {
     const context = useContext(OrderContext);

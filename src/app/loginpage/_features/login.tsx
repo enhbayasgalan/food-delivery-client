@@ -29,10 +29,7 @@ export const Login = () => {
   const Check = async () => {
     console.log(form);
     try {
-      const res = await axios.post(
-        `https://food-delivery-service-0wy6.onrender.com/user/login`,
-        form
-      );
+      const res = await axios.post(`http://localhost:5000/user/login`, form);
       console.log(res);
       if (res.data !== "user not found" && res.data !== "Wrong password") {
         localStorage.setItem("token", res.data);

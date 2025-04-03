@@ -18,8 +18,12 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { jwtDecode } from "jwt-decode";
 
+import { useUser } from "@/provider/UserProvider";
+
 export const Location = () => {
   const [address, setAddress] = useState("");
+
+  const {refetchOrder,setOpenAddress} = useUser()
 
   const postAddress = async () => {
     const token = localStorage.getItem("token");
@@ -34,6 +38,7 @@ export const Location = () => {
         }
       );
       console.log(res);
+      await refetchOrder()
     } catch (error) {
       console.log(error);
     }
@@ -61,7 +66,7 @@ export const Location = () => {
     <div className="jusify-between flex gap-[20px]">
       <Dialog>
         <DialogTrigger asChild>
-          <div className="flex py-2 px-3 gap-1 bg-[#FFFFFF] rounded-full text-sm items-center">
+          <div className="flex py-2 px-3 gap-1 bg-[#FFFFFF] rounded-full text-sm items-center" onClick={() => setOpenAddress(true)}>
             <MapPin stroke="#EF4444" />
             {!user?.address ? (
               <>
@@ -80,7 +85,7 @@ export const Location = () => {
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>Delivery address</DialogTitle>
+            <DialogTitle onClick={() => setOpenAddress(false)}>Delivery address</DialogTitle>
             <DialogDescription></DialogDescription>
           </DialogHeader>
           <div className="grid gap-4 py-4">

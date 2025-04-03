@@ -2,11 +2,14 @@
 
 import { Map, Soup, Timer } from "lucide-react";
 import { item, order } from "./OrderDetail";
+import { useUser } from "@/provider/UserProvider";
+
 type Props = {
   order: order;
 };
 
 export const OrderHistory = ({ order }: Props) => {
+  const { user } = useUser();
   return (
     <div className="w-full h-fit flex flex-col p-3 gap-3 border border-dashed">
       <div className="w-full flex justify-between">
@@ -31,7 +34,7 @@ export const OrderHistory = ({ order }: Props) => {
         </div>
         <div className="w-full flex items-center gap-2">
           <Map stroke="#09090B80" />
-          <p>{order.user.address}</p>
+          <p>{user?.address}</p>
         </div>
       </div>
     </div>

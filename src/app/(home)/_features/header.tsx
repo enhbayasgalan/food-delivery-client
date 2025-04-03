@@ -1,3 +1,4 @@
+
 import { SearchCard } from "../_components/SearchCard"
 import { LogoNomNom } from "./LogoNom"
 
