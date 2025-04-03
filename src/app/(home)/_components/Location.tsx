@@ -25,7 +25,7 @@ export const Location = () => {
     const token = localStorage.getItem("token");
     try {
       const res = await axios.put(
-        `http://localhost:5000/user/address`,
+        `https://food-delivery-service-0wy6.onrender.com/user/address`,
         { address: address },
         {
           headers: {

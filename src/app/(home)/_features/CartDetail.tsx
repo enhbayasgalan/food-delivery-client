@@ -53,7 +53,7 @@ export const CartDetail = () => {
 
       try {
         const res = await axios.post(
-          `http://localhost:5000/order`,
+          `https://food-delivery-service-0wy6.onrender.com/order`,
           { totalPrice: totalprice, foodOrderItems: item },
           {
             headers: {
@@ -64,13 +64,13 @@ export const CartDetail = () => {
         console.log(res);
       } catch (error) {
         console.log(error);
-      }finally{
-        localStorage.setItem('cart', JSON.stringify([]))
-        setCartItmes([])
+      } finally {
+        localStorage.setItem("cart", JSON.stringify([]));
+        setCartItmes([]);
       }
     }
   };
-  const notify = () => toast("Success food cart")
+  const notify = () => toast("Success food cart");
 
   return (
     <div className="w-full h-full flex flex-col gap-6">
@@ -97,7 +97,6 @@ export const CartDetail = () => {
             />
           ))
         )}
-
       </Card>
       <div className="p-4 bg-[#FFFF] rounded-xl flex flex-col gap-5">
         <div className="text-xl font-semibold text-black">Payment info</div>

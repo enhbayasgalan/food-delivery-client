@@ -38,16 +38,7 @@ export const FoodDetail = ({ food }: Props) => {
         JSON.stringify([{ food: food, quantity: foodItemsquantity }])
       );
     }
-    
 
-    // try {
-
-    //   const res = await axios.post(`http://localhost:5000/orderItems/${food._id}`);
-    //   getCartItems();
-    //   console.log(res);
-    // } catch (error) {
-    //   console.error(error);
-    // }
   };
   const notify = () => toast("Success food cart");
   const minus = () => {

@@ -1,5 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
-
 import { Category } from "../(home)/_features/Category";
 import { Footer } from "../(home)/_features/Footer";
 import { Header } from "../(home)/_features/header";

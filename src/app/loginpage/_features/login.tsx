@@ -29,21 +29,23 @@ export const Login = () => {
   const Check = async () => {
     console.log(form);
     try {
-      const res = await axios.post(`http://localhost:5000/user/login`, form );
+      const res = await axios.post(
+        `https://food-delivery-service-0wy6.onrender.com/user/login`,
+        form
+      );
       console.log(res);
-      if (res.data !== "user not found" && res.data !== 'Wrong password') {
-        localStorage.setItem('token',res.data)
-        router.push('/')
+      if (res.data !== "user not found" && res.data !== "Wrong password") {
+        localStorage.setItem("token", res.data);
+        router.push("/");
       }
 
-      localStorage.getItem("cart" )
-      
+      localStorage.getItem("cart");
     } catch (error) {
       console.log(error);
     }
   };
   // console.log(form);
-  const notify = () => toast("Success Login")
+  const notify = () => toast("Success Login");
 
   return (
     <div className="w[416px] flex items-center justify-center">
@@ -85,12 +87,20 @@ export const Login = () => {
             <p>show password</p>
           </div>
         </form>
-        <Button className="py-[4px]w-full border rounded-md bg-gray-400" onClick={Check} onClickCapture={notify}>
+        <Button
+          className="py-[4px]w-full border rounded-md bg-gray-400"
+          onClick={Check}
+          onClickCapture={notify}
+        >
           lets go
         </Button>
         <div className="flex w-full justify-center gap-4">
           <p>Dont have a account?</p>
-          <Button onClick={() => router.push("/singup")} className="text-[#2563EB]" variant="outline">
+          <Button
+            onClick={() => router.push("/singup")}
+            className="text-[#2563EB]"
+            variant="outline"
+          >
             sign up
           </Button>
         </div>
