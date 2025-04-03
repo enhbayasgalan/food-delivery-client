@@ -38,7 +38,6 @@ export const FoodDetail = ({ food }: Props) => {
         JSON.stringify([{ food: food, quantity: foodItemsquantity }])
       );
     }
-
   };
   const notify = () => toast("Success food cart");
   const minus = () => {
@@ -49,14 +48,14 @@ export const FoodDetail = ({ food }: Props) => {
     <Dialog>
       <DialogTrigger
         asChild
-        className="flex w-[44px] h-[44px] px-[8px] py-[16px] justify-center items-center gap-[8px]"
+        className="flex w-[44px] h-[44px] px-[8px] py-[16px] justify-center items-center gap-[8px] "
       >
         <Button variant="outline" className="rounded-full">
           <Plus stroke="#EF4444" />
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[778px] max-h-[364px]">
-        <img src={food.image} className="w-[377px] h-[20px] px-2 " />
+      <DialogContent className="sm:max-w-[778px] max-h-[364px] flex">
+        <img src={food.image} className="w-[377px] h-auto px-2 rounded-xl" />
         <DialogHeader>
           <DialogTitle className="flex flex-col justify-between ">
             <p className="font-semibold text-3xl text-[#EF4444]">
@@ -64,14 +63,14 @@ export const FoodDetail = ({ food }: Props) => {
             </p>
             <div className="mt-[10px]">{food.ingredients}</div>
           </DialogTitle>
-          <div>
+          <div className="mt-[60px]">
             <p className="font-normal text-base mt-[50px]">Total Price</p>
             <p className="font-semibold text-2xl">
               {food.price * foodItemsquantity}$
             </p>
           </div>
         </DialogHeader>
-        <div className="justify-between flex w-full">
+        <div className="justify-between flex w-full mt-[250px]">
           <div className="flex items-center gap-2">
             <Button className="p-1 rounded-full" onClick={minus}>
               <Minus size={20} />
@@ -85,7 +84,11 @@ export const FoodDetail = ({ food }: Props) => {
           </div>
         </div>
         <DialogFooter>
-          <Button onClick={postQuantity} onClickCapture={notify}>
+          <Button
+            onClick={postQuantity}
+            onClickCapture={notify}
+            className="mt-[260px]"
+          >
             Add to cart
           </Button>
         </DialogFooter>
