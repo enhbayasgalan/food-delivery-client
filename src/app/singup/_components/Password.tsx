@@ -35,7 +35,7 @@ export const Password = ({ user, postUser, setUser, setStep }: Props) => {
     }
   };
   console.log(user);
-  const notify = () => toast("Success food cart")
+  const notify = () => toast("Success Password")
 
   return (
     <div>
